@@ -1,23 +1,21 @@
 import React from 'react'
+import {NavLink} from 'react-router-dom'
 
 const NavigationItems = (props) => {
 
     let classNameList = "nav-item "
-    let href="#"
     if(props.active)
     {
         classNameList+="active"
     }
-    if(props.title==='Made By Yogesh')
-    {
-     href="https://www.yogesh-bhattarai.com"
-    }
-
+    
     return (
         <div>
+            <NavLink activeClassName="active" to={props.href} exact>
            <li className={classNameList}>
-                    <a className="nav-link" href={href}><i className="far fa-address-book"></i>{props.title}</a>
+                    <i className="far fa-address-book"></i>{props.title}
                 </li>
+                </NavLink>
         </div>
     )
 }

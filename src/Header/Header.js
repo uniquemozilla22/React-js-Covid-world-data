@@ -6,13 +6,13 @@ import Logo from './logo/logo'
 
 const Header = (props) => {
     const navigationItems={
-        0:{active:false , title:"Made By Yogesh"},
-        1:{active:true , title:"Global Stats"},
-        2:{active:false , title:"Stats By Country"},
+        0:{active:false , title:"Made By Yogesh",href:"https://www.yogesh-bhattarai.com"},
+        1:{active:true , title:"Global Stats",href:"/global"},
+        2:{active:false , title:"Stats By Country",href:"/country"},
     }
     let printing=[];
     Object.keys(navigationItems).map((key,i)=>{   
-           return printing[i]=<NavigationItems key={key} active={navigationItems[key].active} title={navigationItems[key].title}/>
+           return printing[i]=<NavigationItems key={key} active={navigationItems[key].active} title={navigationItems[key].title} href={navigationItems[key].href}/>
     })
     return (       
         <div>

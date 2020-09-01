@@ -1,5 +1,11 @@
 .card{
-  padding:10px;
   margin:20px;
   width:30%;
+
+
+}
+.card:hover{
+  transition-duration: 500ms;
+  box-shadow: 15px 15px 10px #2a50ce54;
+
 }

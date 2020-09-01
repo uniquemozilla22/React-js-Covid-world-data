@@ -1,30 +1,16 @@
 import React, { Component } from 'react'
 import Aux from '../../HOC/Auxulary'
 import Card from '../Cards/card/card'
-import Axios from 'axios'
 import Cards from '../Cards/Cards'
 import Spinner from '../../Spinner/Spinner'
 
 export default class Global extends Component {
     state={
-        data:{},
         dataRequested:"",
         loading:true
 
     }
-    componentDidMount() {
-
-        Axios.get('https://api.covid19api.com/summary')
-        .then(response=>{
-           
-            this.setState({
-                ...this.state,
-                loading:false,
-                data:response.data['Global']
-            })
-        })
-        
-    }
+    
     // Prototype methods, Bind in Constructor (ES2015)
     handleEvent=(event)=> {
         this.setState({
@@ -36,17 +22,15 @@ export default class Global extends Component {
 
     render() {
         let selected=[]
-        Object.keys(this.state.data).map((keys,i)=>{
-                return selected[i]=<option value={keys} key={this.state.data[keys]}>{keys}</option>
+        Object.keys(this.props.datas).map((keys,i)=>{
+                return selected[i]=<option value={keys} key={this.props.datas[keys]}>{keys}</option>
         })
 
                    
-                    let individual= this.state.dataRequested!==""?<Card status={this.state.dataRequested} number={this.state.data[this.state.dataRequested]}></Card>:<br/>
-       
-console.log()
-        let loadingHandler=!this.state.loading?
+        let individual= this.state.dataRequested!==""?<Card status={this.state.dataRequested} number={this.props.datas[this.state.dataRequested]}></Card>:<br/>
+        let loadingHandler=typeof this.props.datas!== 'undefined'?
         <div>
-        <Cards datas={this.state.data}></Cards>
+        <Cards datas={this.props.datas}></Cards>
     </div>
         :<Spinner/>
         
