@@ -6,6 +6,7 @@ import {Switch,Route} from 'react-router-dom'
 import Global from './Body/Global/Global'
 import Country from './Body/Countries/Country'
 import Intro from './Body/Intro/Intro';
+import Spinner from './Spinner/Spinner';
 
 
 class App extends Component{
@@ -27,13 +28,16 @@ class App extends Component{
   }
 
   render(){
+
+    let globalloader=this.state.data!==null?()=><Global datas={this.state.data} loading={this.state.loading}/>:<Spinner />
+    let countryLoader=this.state.countriesData!==null?()=><Country datas={this.state.countriesData}/>:<Spinner/>
     return(
       <div className="App">
       <Header></Header>
       <Switch>
         <Route path="/" exact component={Intro}/>
-        <Route path="/global" exact render={()=><Global datas={this.state.data} loading={this.state.loading}/>}/>
-        <Route path="/country" exact render={()=><Country datas={this.state.countriesData}/>}/>
+        <Route path="/global" exact render={globalloader}/>
+        <Route path="/country" exact render={countryLoader}/>
         </Switch>
       </div>
     )

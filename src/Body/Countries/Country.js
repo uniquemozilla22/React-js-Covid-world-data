@@ -21,8 +21,10 @@ export default class Country extends Component {
     render() {
         let selected=[];
         let printinfTheDatas=[];
-        for (let x =0; x<this.props.datas.length;x++){
 
+
+        for (let x =0; x<this.props.datas.length;x++){
+        // eslint-disable-next-line
                 Object.keys(this.props.datas[x]).map((keys,i)=>{
                     
                     if(keys==="Country")
@@ -32,14 +34,14 @@ export default class Country extends Component {
                 })
             
         }
-
         if (this.state.selectedCountry!=='')
         {
+            // eslint-disable-next-line
             Object.keys(this.props.datas[this.state.selectedCountry]).map((keys,i)=>{
                 if(typeof this.props.datas[this.state.selectedCountry][keys]!=="object")    
                 
                 {
-                   return printinfTheDatas[i]=<Card status={keys} number={this.props.datas[this.state.selectedCountry][keys]}/>
+                   return printinfTheDatas[i]=<Card key={keys} status={keys} number={this.props.datas[this.state.selectedCountry][keys]}/>
 
                 }
             })
