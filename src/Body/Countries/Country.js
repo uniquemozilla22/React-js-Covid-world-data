@@ -1,13 +1,25 @@
 import React, { Component } from 'react'
 import Aux from '../../HOC/Auxulary'
 import Card from '../Cards/card/card'
+import Axios from 'axios'
 
 export default class Country extends Component {
     state={
+        datas:{},
         loading:true,
         selectedCountry:''
 
     }
+    componentDidMount() {
+        Axios.get('https://api.covid19api.com/summary')
+          .then(response=>{
+              this.setState({
+                  ...this.state,
+                  datas:response.data['Countries']
+              })
+          })
+    }
+  
 
     // Prototype methods, Bind in Constructor (ES2015)
     handleEvent=(event,number)=> {
@@ -22,26 +34,26 @@ export default class Country extends Component {
         let selected=[];
         let printinfTheDatas=[];
 
-
-        for (let x =0; x<this.props.datas.length;x++){
-        // eslint-disable-next-line
-                Object.keys(this.props.datas[x]).map((keys,i)=>{
+            for (let x =0; x<this.state.datas.length;x++){
+                // eslint-disable-next-line
+                        Object.keys(this.state.datas[x]).map((keys,i)=>{
+                            
+                            if(keys==="Country")
+                            {
+                               return selected[x]=<option key={x} value={x}>{this.state.datas[x][keys]}</option> 
+                            }
+                        })
                     
-                    if(keys==="Country")
-                    {
-                       return selected[x]=<option key={x} value={x}>{this.props.datas[x][keys]}</option> 
-                    }
-                })
-            
-        }
+                }
+        
         if (this.state.selectedCountry!=='')
         {
             // eslint-disable-next-line
-            Object.keys(this.props.datas[this.state.selectedCountry]).map((keys,i)=>{
-                if(typeof this.props.datas[this.state.selectedCountry][keys]!=="object")    
+            Object.keys(this.state.datas[this.state.selectedCountry]).map((keys,i)=>{
+                if(typeof this.state.datas[this.state.selectedCountry][keys]!=="object")    
                 
                 {
-                   return printinfTheDatas[i]=<Card key={keys} status={keys} number={this.props.datas[this.state.selectedCountry][keys]}/>
+                   return printinfTheDatas[i]=<Card key={keys} status={keys} number={this.state.datas[this.state.selectedCountry][keys]}/>
 
                 }
             })
