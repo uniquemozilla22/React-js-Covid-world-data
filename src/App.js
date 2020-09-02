@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Axios from 'axios'
 import Header from './Header/Header';
 import {Switch,Route} from 'react-router-dom'

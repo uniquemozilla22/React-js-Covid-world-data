@@ -5,7 +5,7 @@ import Axios from 'axios'
 
 export default class Country extends Component {
     state={
-        datas:{},
+        datas:[],
         loading:true,
         selectedCountry:''
 
@@ -21,7 +21,6 @@ export default class Country extends Component {
     }
   
 
-    // Prototype methods, Bind in Constructor (ES2015)
     handleEvent=(event,number)=> {
 
         this.setState({
@@ -29,22 +28,22 @@ export default class Country extends Component {
             selectedCountry:event.target.value
         })
     }
-
+                                              
     render() {
         let selected=[];
         let printinfTheDatas=[];
-
-            for (let x =0; x<this.state.datas.length;x++){
-                // eslint-disable-next-line
-                        Object.keys(this.state.datas[x]).map((keys,i)=>{
-                            
-                            if(keys==="Country")
-                            {
-                               return selected[x]=<option key={x} value={x}>{this.state.datas[x][keys]}</option> 
-                            }
-                        })
-                    
+        this.state.datas.forEach((item,index,arr)=>{
+            // eslint-disable-next-line
+            Object.keys(this.state.datas[index]).map((keys,i)=>{
+                                
+                if(keys==="Country")
+                {
+                   return selected[index]=<option key={index} value={index}>{this.state.datas[index][keys]}</option> 
                 }
+            })
+        }
+            
+        );
         
         if (this.state.selectedCountry!=='')
         {
