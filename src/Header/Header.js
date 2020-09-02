@@ -6,8 +6,8 @@ import Logo from './logo/logo'
 
 const Header = (props) => {
     const navigationItems={
-        0:{active:false , title:"Made By Yogesh",href:"https://www.yogesh-bhattarai.com"},
-        1:{active:true , title:"Global Stats",href:"/global"},
+        0:{active:false , title:"Made By Yogesh",href:"/"},
+        1:{active:false , title:"Global Stats",href:"/global"},
         2:{active:false , title:"Stats By Country",href:"/country"},
     }
     let printing=[];

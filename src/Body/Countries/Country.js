@@ -1,32 +1,65 @@
 import React, { Component } from 'react'
-import Axios from 'axios'
+import Aux from '../../HOC/Auxulary'
+import Card from '../Cards/card/card'
+import Cards from'../Cards/Cards'
+import card from '../Cards/card/card'
 
 export default class Country extends Component {
     state={
-        CountriesDataRequested:"",
-        loading:true
+        CountriesDatanumber:"",
+        loading:true,
+        selectedCountry:''
 
     }
 
     // Prototype methods, Bind in Constructor (ES2015)
-    handleEvent() {}
+    handleEvent=(event,number)=> {
+
+        this.setState({
+            ...this.state,
+            selectedCountry:event.target.value
+        })
+    }
 
     render() {
-        console.log(this.props.datas)
-        let selected=[]
+        let selected=[];
+        let printinfTheDatas=[];
         for (let x =0; x<this.props.datas.length;x++){
+
                 Object.keys(this.props.datas[x]).map((keys,i)=>{
-                selected[i]=<option value={this.props.datas[keys][i]} key={this.props.datas[keys]}>{keys}</option>
+                    
+                    if(keys==="Country")
+                    {
+                        selected[x]=<option key={x} value={x}>{this.props.datas[x][keys]}</option> 
+                    }
                 })
             
         }
+
+        if (this.state.selectedCountry!=='')
+        {
+            Object.keys(this.props.datas[this.state.selectedCountry]).map((keys,i)=>{
+                if(typeof this.props.datas[this.state.selectedCountry][keys]!=="object")    
+                
+                {
+                   printinfTheDatas[i]=<Card status={keys} number={this.props.datas[this.state.selectedCountry][keys]}/>
+
+                }
+            })
+        }
         return (
+            <Aux>
             <div className="row">
-            <select onChange={this.handleEvent}style={{"width":"100%","height":"50px"}}>
-                <option value="">-Select the prefered data-</option>
+            <select onChange={(number)=>this.handleEvent(number)}style={{"width":"100%","height":"50px"}}>
+                <option value="">-Select the country's name to show the Data of-</option>
                 {selected}
             </select>
         </div>
+        <div className="row">
+                {printinfTheDatas}
+             </div>
+            </Aux>
+            
         )
     }
 }

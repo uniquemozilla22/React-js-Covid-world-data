@@ -24,7 +24,7 @@ export default class Global extends Component {
         let selected=[]
         Object.keys(this.props.datas).map((keys,i)=>{
                 return selected[i]=<option value={keys} key={this.props.datas[keys]}>{keys}</option>
-        })
+        })    
 
                    
         let individual= this.state.dataRequested!==""?<Card status={this.state.dataRequested} number={this.props.datas[this.state.dataRequested]}></Card>:<br/>

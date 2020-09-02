@@ -8,7 +8,11 @@ const Cards = (props) => {
     let printingCard=[];
 
     Object.keys(props.datas).map((keys,i)=>{
-           return printingCard[i]=<Card key={keys} status={keys} number={props.datas[keys]}></Card>
+        if(props.data!=='object')
+        {
+            return printingCard[i]=<Card key={keys} status={keys} number={props.datas[keys]}></Card>
+
+        }
     })
     return (
         <Aux>
