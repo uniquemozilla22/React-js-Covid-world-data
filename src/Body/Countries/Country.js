@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import Aux from '../../HOC/Auxulary'
 import Card from '../Cards/card/card'
-import Cards from'../Cards/Cards'
-import card from '../Cards/card/card'
 
 export default class Country extends Component {
     state={
-        CountriesDatanumber:"",
         loading:true,
         selectedCountry:''
 
@@ -30,7 +27,7 @@ export default class Country extends Component {
                     
                     if(keys==="Country")
                     {
-                        selected[x]=<option key={x} value={x}>{this.props.datas[x][keys]}</option> 
+                       return selected[x]=<option key={x} value={x}>{this.props.datas[x][keys]}</option> 
                     }
                 })
             
@@ -42,7 +39,7 @@ export default class Country extends Component {
                 if(typeof this.props.datas[this.state.selectedCountry][keys]!=="object")    
                 
                 {
-                   printinfTheDatas[i]=<Card status={keys} number={this.props.datas[this.state.selectedCountry][keys]}/>
+                   return printinfTheDatas[i]=<Card status={keys} number={this.props.datas[this.state.selectedCountry][keys]}/>
 
                 }
             })
