@@ -3,7 +3,7 @@ import './intro.css'
 
 const Intro = () => {
     return (
-        <div className="view jarallax" data-jarallax='{"speed": 0.2}' style={{"background-image": "url('http://yogesh-bhattarai.com/img/home-bg-2.jpg')", "background-repeat": "no-repeat", "background-size": "cover" ,"height":"700px","margin-top":"10px"}}>
+        <div className="view jarallax" data-jarallax='{"speed": 0.2}' style={{"backgroundImage": "url('http://yogesh-bhattarai.com/img/home-bg-2.jpg')", "backgroundRepeat": "noRepeat", "backgroundSize": "cover" ,"height":"800px","marginTop":"10px"}}>
     <div className="mask rgba-white-light d-flex justify-content-center align-items-center">
       <div className="container">
         <div className="row">

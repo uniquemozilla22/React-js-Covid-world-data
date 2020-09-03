@@ -21,7 +21,6 @@ class App extends Component{
             this.setState({
                 ...this.state,
                 data:response.data['Global'],
-                countriesData:response.data['Countries']
             })
         })
   }
@@ -29,7 +28,7 @@ class App extends Component{
   render(){
 
     let globalloader=this.state.data!==null?()=><Global datas={this.state.data} loading={this.state.loading}/>:<Spinner />
-    let countryLoader=this.state.countriesData!==null?()=><Country datas={this.state.countriesData}/>:<Spinner/>
+    let countryLoader=this.state.countriesData!==null?()=><Country />:<Spinner/>
     return(
       <div className="App">
       <Header></Header>

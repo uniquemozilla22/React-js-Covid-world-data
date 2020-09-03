@@ -21,7 +21,7 @@ export default class Country extends Component {
     }
   
 
-    handleEvent=(event,number)=> {
+    handleEvent=(event)=> {
 
         this.setState({
             ...this.state,
